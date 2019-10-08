@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticlesOnlineService } from '../service/articlesonline.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-portfolio-update',
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioUpdateComponent implements OnInit {
 
-  constructor() { }
+portfolio;
+isOk = false;
+
+  constructor(private service: ArticlesOnlineService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
-  }
+    this.route.paramMap.subscribe((params)=>{
+      const id = params.get("id")
+      this.service.getOne(id).subscribe((result)=>{
 
+
+        this.portfolio = result;
+      },(error) => {
+        this.router.navigate(["/not-found"]);
+
+      })
+
+
+    })
+  }
+  onSubmitNewPortfolio($event,f)
+  {
+    $event.preventDefault();
+    if(f.valid){
+      const portfolio = (f.value);
+
+      this.service.update(portfolio).subscribe((result)=>{
+        this.isOk = true;
+      })
+    }
+  }
 }

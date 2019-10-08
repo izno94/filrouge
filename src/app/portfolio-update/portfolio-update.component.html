@@ -1,1 +1,97 @@
-<p>portfolio-update works!</p>
+<form #f="ngForm" (submit)="onSubmitNewPortfolio($event,f)">
+    <input type="hidden" [value]="portfolio.id">
+        <div class="form-group">
+          <label for="titre">Titre:</label>
+          <input type="text"
+                 class="form-control"
+                 id="titre"
+                 name="titre"
+                 ngModel
+                 #titre ="ngModel"
+                 required
+                 minlength="20"
+                 [value]="portfolio.titre"
+                 >
+                 <div class="alert alert-danger" *ngIf="titre.touched && !titre.valid">
+                    <div *ngIf="titre.errors.required">le champ titre est obligatoire </div>
+                    <div *ngIf="titre.errors.minlength">20 caracteres minimum</div>
+                 </div>
+        </div>
+        <!-- contenu -->
+        <div class="form-group">
+          <label for="contenu">Contenu:</label>
+          <textarea type="text"
+                    name="contenu"
+                    id="contenu"
+                    ngModel
+                    #contenu="ngModel"
+                    cols="30"
+                    rows="10"
+                    class="form-control"
+                    required
+                    minlength="20"
+                    [value]="portfolio.contenu"
+                    ></textarea>
+                    <div class="alert alert-danger" *ngIf="contenu.touched && !contenu.valid">
+                      <div *ngIf="contenu.errors.required">le champ contenu est obligatoire </div>
+                      <div *ngIf="contenu.errors.minlength">20 caracteres minimum</div>
+                    </div>
+        </div>
+        <!-- Categorie -->
+        <div>
+            <div class="form-group" >
+            <label for="categorie">Catégorie :</label>
+            </div>
+
+            <select class="custom-select">
+                <option selected value="1">Tragédie</option>
+                <option value="2">Comédie</option>
+                <option value="3">Thriller</option>
+                <option value="4">Cyberpunk</option>
+                <option value="5">Space Opéra</option>
+                <option value="6">Roman</option>
+                <option value="7">Bande dessinée</option>
+              </select>
+          </div>
+          <!-- Statue -->
+        <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">Status</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                  <label class="form-check-label" for="gridRadios1">
+                    Publié
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                  <label class="form-check-label" for="gridRadios2">
+                    Brouillon
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- date de creation -->
+
+          <label for="start">date de création : &nbsp;</label>
+
+<input type="date" id="start" name="trip-start"
+
+       min="1950-01-01" max="2050-12-31">
+<hr>
+
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="!f.valid"
+                >Envoyer</button>
+        <!-- <input type="file" class="btn btn-danger" id="bt"> --------------//importer un fichier -->
+    </form>
+    <div class="alert alert-success" *ngIf="isOk">
+       Contenu Créé !
+    </div>
+
+
+

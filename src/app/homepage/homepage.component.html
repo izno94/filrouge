@@ -1,17 +1,19 @@
 <div>
   <article *ngFor="let article of articles">
-      <h2><span class="badge badge-secondary">New</span>{{ article.titre}} {{article.id}}</h2>
+      <h2><span class="badge badge-pill badge-danger">New</span>{{ article.titre}} {{article.id}}</h2>
       <p>{{article.contenu}}</p>
       <p>{{article.date_creation}}</p>
       <p>{{article.categories}}</p>
+      <a [routerLink]="['/portfolio', article._id]">lire la suite</a>
   </article>
+
 </div>
 
-<nav aria-label="Page navigation ">
+<!-- <nav aria-label="Page navigation ">
       <ul class="pagination justify-content-md-center">
           <li class="page-item" *ngFor="let page of [].constructor(nbPage()) ;let i= index">
               <a class="page-link" routerLink="/"[queryParams]="{page:i}">
                   {{ i + 1 }}</a>
           </li>
       </ul>
-  </nav>
+  </nav> -->

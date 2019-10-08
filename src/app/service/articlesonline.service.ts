@@ -6,44 +6,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ArticlesOnlineService {
   //private url ="https://jsonplaceholder.typicode.com/posts";
-  private url = 'https://damp-refuge-61211.herokuapp.com/';
+  private url = 'https://limitless-scrubland-55498.herokuapp.com/api/article/';
   constructor( private http: HttpClient) { }
-
-  //Read All
-
   getAll()
   {
     return this.http.get (this.url)
   }
-
-  //Read One
-
   getOne(id)
   {
     return this.http.get (`${this.url}/${id}`)
   }
-
-
-  //Create
-
   create(ressource)
   {
     return this.http.post(this.url,ressource)
   }
-
-
-
-  //Update
-
   update(ressource)
   {
     return this.http.put(`${this.url}/${ressource.id}`,ressource)
   }
-
-
-
-  //delete
-
   delete(id)
   {
     return this.http.delete(`${this.url}/${id}`)

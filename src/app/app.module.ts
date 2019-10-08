@@ -15,7 +15,7 @@ import { ArticleComponent } from './article/article.component';
 import { LocalService } from './service/local.service';
 import { NewPortFolioComponent } from './new-port-folio/new-port-folio.component';
 import { MorePipe } from './more.pipe';
-import { ArticlesOnlineService } from './service/online.service';
+import { ArticlesOnlineService } from './service/articlesonline.service';
 
 @NgModule({
   declarations: [

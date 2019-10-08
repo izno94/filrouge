@@ -2,7 +2,7 @@
   <a routerLink="/portfolio/new" class="btn btn-primary">Creer un nouvel article</a>
 </div>
 <div>
-  <article *ngFor="let portfolio of portfolio">
+  <article *ngFor="let portfolio of portfolios">
       <h2>
           <a [routerLink]="['/portfolio', portfolio._id]">
               {{portfolio.titre | more:10}}

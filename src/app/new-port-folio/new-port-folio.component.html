@@ -7,17 +7,57 @@
              placeholder="Remplir"
              name="titre"
              ngModel
-             #titre ="ngModel">
+             #titre ="ngModel"
+             minlength="2"
+             maxlength="50">
+    <div class="alert alert-danger" *ngIf="titre.touched && !titre.valid">
+                <div *ngIf="titre.errors.required">le champ titre est obligatoire </div>
+                <div *ngIf="titre.errors.minlength">2 caracteres minimum</div>
+     </div>
 
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Contenu</label>
+    <label for="contenu" class="col-sm-2 col-form-label">Contenu</label>
     <div class="col-sm-10">
-      <input type="input" class="form-control" id="inputPassword3" placeholder="Remplir">
+      <input type="text"
+             class="form-control"
+             placeholder="Remplir"
+             name="contenu"
+             ngModel
+             #contenu ="ngModel"
+             minlength="1"
+             maxlength="2500"
+             >
+             <div class="alert alert-danger" *ngIf="titre.touched && !titre.valid">
+                <div *ngIf="contenu.errors.required">le champ titre est obligatoire </div>
+                <div *ngIf="contenu.errors.minlength">2 caracteres minimum</div>
+     </div>
+
     </div>
   </div>
-  <fieldset class="form-group">
+<!-- Catégorie placer un Ng Model -->
+ <div>
+  <div class="form-group" >
+  <label for="categorie">Catégorie :</label>
+  </div>
+
+  <select class="custom-select"
+          name="categorie"
+          ngModel
+          #categorie="ngModel">
+      <option selected value="1">Tragédie</option>
+      <option value="2">Comédie</option>
+      <option value="3">Thriller</option>
+      <option value="4">Cyberpunk</option>
+      <option value="5">Space Opéra</option>
+      <option value="6">Roman</option>
+      <option value="7">Bande dessinée</option>
+    </select>
+</div>
+<!-- Status placer un Ng Model -->
+
+  <fieldset>
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">Status</legend>
       <div class="col-sm-10">
@@ -36,6 +76,7 @@
       </div>
     </div>
   </fieldset>
+
   <div class="form-group row">
     <div class="col-sm-10">
       <button type="submit" class="btn btn-primary">Envoyé</button>

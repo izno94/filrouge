@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core'; //Permet de limité le nombre de caractères a afficher
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'more'
